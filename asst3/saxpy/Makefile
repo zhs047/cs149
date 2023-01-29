@@ -22,7 +22,7 @@ CXXFLAGS=-O3 -Wall
 LDFLAGS=-L/usr/local/cuda-12.0/lib64/ -lcudart
 # endif
 NVCC=nvcc
-NVCCFLAGS=-O3 -m64 --gpu-architecture compute_80
+NVCCFLAGS= -O3 -m64 --gpu-architecture compute_80
 
 
 OBJS=$(OBJDIR)/main.o  $(OBJDIR)/saxpy.o

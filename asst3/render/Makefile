@@ -12,25 +12,17 @@ LOGS	   := logs
 
 ###########################################################
 
-ARCH=$(shell uname | sed -e 's/-.*//g')
 OBJDIR=objs
 CXX=g++ -m64
 CXXFLAGS=-O3 -Wall -g
-HOSTNAME=$(shell hostname)
 
 LIBS       :=
 FRAMEWORKS :=
 
-NVCCFLAGS=-O3 -m64 --gpu-architecture compute_35
+NVCCFLAGS=-O3 -m64 --gpu-architecture compute_80
 LIBS += GL glut cudart
 
-ifneq ($(wildcard /opt/cuda-8.0/.*),)
-# Latedays
-LDFLAGS=-L/opt/cuda-8.0/lib64/ -lcudart
-else
-# GHC
-LDFLAGS=-L/usr/local/cuda/lib64/ -lcudart
-endif
+LDFLAGS=-L/usr/local/cuda-12.0/lib64/ -lcudart
 
 LDLIBS  := $(addprefix -l, $(LIBS))
 LDFRAMEWORKS := $(addprefix -framework , $(FRAMEWORKS))
